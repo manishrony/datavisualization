@@ -25,7 +25,7 @@
 <svg class= "chart" width=500 height=500></svg>
 <div class="buttons" id="buttons"></div>
 <div id="tooltip"/>
-Fuel Efficiency Scatterplot Visualization for different Vehicle Fuel Type
+<h1>Fuel Efficiency Scatterplot Visualization for different Vehicle Fuel Type</h1>
 <script>
  var margin=50;
  var height=400;
@@ -65,7 +65,7 @@ async function init() {
  var groupset = d3.set(groups).add("All Fuel Type");
  buttons
 	  .selectAll("button")
-	  .data(groups)
+	  .data(groupset)
 	  .enter()
      	  .append("button")
 	  .text(function(d) { return "Fuel Type: " + d; })
