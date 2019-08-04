@@ -139,6 +139,8 @@ d3.select("svg")
 
 }
 
+d3.slider().value(["Gasoline", "Electric", "Diesel" ]);
+   
 // Listen to the slider
 d3.select("#mySlider").on("change", function(d){
   selectedValue = this.value
