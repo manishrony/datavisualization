@@ -22,12 +22,12 @@
    }
    </style>
 <body onload='init()'>
-<svg class= "chart" width=500 height=800></svg>
+<svg class= "chart" width=900 height=600></svg>
 <div class="buttons" id="buttons"></div>
 <div id="tooltip"/>
 <script>
  var margin=50;
- var height=400;
+ var height=500;
  var width=800;
  var domainStart=10;
  var domainEnd=150;
@@ -35,12 +35,12 @@
    
 var xScale= d3.scaleLog()
   .domain([domainStart, domainEnd])
-  .range([0,400])
+  .range([0,800])
   .base(10);
 
 var yScale= d3.scaleLog()
   .domain([domainEnd, domainStart])
-  .range([0,400])
+  .range([0,500])
   .base(10);
 
 var colorScale = d3.scaleOrdinal()
