@@ -60,7 +60,6 @@ var plot = d3.select("svg").append("g")
     
 async function init() {
  const data= await d3.csv("https://flunky.github.io/cars2017.csv");
- console.log(data[1]);
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
  buttons
@@ -76,8 +75,7 @@ drawPlot(dataset, "", false);
 }
    
 function drawPlot(data, fuel, filter){
-plot.selectAll(".circleGroups")
-		.selectAll("circle")
+d3.select("svg").selectAll("circle")
 		.exit()
 		.remove();
 	
