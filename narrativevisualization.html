@@ -99,27 +99,9 @@ console.log(thisDataGroup[2].Make);
 		.attr('cy', function(d) {return yScale(d.AverageHighwayMPG);})
 		.attr('r', function(d) {return Number(d.EngineCylinders) + 2;})
 		.style("fill", function(d, i) { return colorScale(d.Fuel); })
-
-		//.transition()
-		//.delay(function(d, i) { return i*40; })
-		//.attr("transform",function(d) { return "translate(" + xScale(d.AverageCityMPG) + "," + yScale(d.AverageHighwayMPG) + ")" })
-
-	plot.selectAll(".circleGroups")
-		.select("circle")
-		//.transition()
-		//.delay(function(d, i) { return i*40; })
-//circles
-//.enter()
-//.append('circle')
-//.attr('cx', function(d,i) {return xScale(d.AverageCityMPG);})
-//.attr('cy', function(d) {return yScale(d.AverageHighwayMPG);})
-//.attr('r', function(d) {return Number(d.EngineCylinders) + 2;})
-//.style('fill', function (d) { return colorScale(d.Fuel); })
-//.transition()
-  //    .duration(400)
-.on('mouseover', function(d,i){ d3.select(this).attr("r", Number(d.EngineCylinders)+5).style("fill", "orange"); tooltip.style("opacity", 1).style("left", (d3.event.pageX)+"px").style("top", (d3.event.pageY)+"px")
-   .html ("Make: "+d.Make + ", Fuel: "+ d.Fuel)})
-.on('mouseout', function (d) { d3.select(this).attr("r", Number(d.EngineCylinders)+2).style("fill", colorScale(d.Fuel)); tooltip.style("opacity", 0)});
+		.on('mouseover', function(d,i){ d3.select(this).attr("r", Number(d.EngineCylinders)+5).style("fill", "orange"); tooltip.style("opacity", 1).style("left", (d3.event.pageX)+"px").style("top", (d3.event.pageY)+"px")
+   			.html ("Make: "+d.Make + ", Fuel: "+ d.Fuel)})
+		.on('mouseout', function (d) { d3.select(this).attr("r", Number(d.EngineCylinders)+2).style("fill", colorScale(d.Fuel)); tooltip.style("opacity", 0)});
    
 d3.select("svg").append("g")
 .attr("transform", "translate("+margin+","+margin+")")
