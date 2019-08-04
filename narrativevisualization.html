@@ -39,7 +39,7 @@
    
    </style>
 <body onload='init()'>
-<input type="range" name="mySlider" id=mySlider min=margin max=width value="10">
+<input type="range" name="mySlider" id=mySlider min=25 max=400 value="25">
 <svg class= "chart" width=500 height=500></svg>
 <div id="tooltip"/>
 
@@ -138,6 +138,12 @@ d3.select("svg")
       .text("Average City MPG");
 
 }
+
+// Listen to the slider?
+d3.select("#mySlider").on("change", function(d){
+  selectedValue = this.value
+  update(selectedValue)
+})
    
 function update(h) {
   // update position and text of label according to slider scale
