@@ -51,7 +51,9 @@ d3.select("svg")
 .attr('cx', function(d,i) {return x(d.AverageCityMPG);})
 .attr('cy', function(d) {return y(d.AverageHighwayMPG);})
 .attr('r', function(d) {return Number(d.EngineCylinders)+2;})
-
+.on('mouseover', function(d,i){ tooltip.style("opacity", 1).style("left", (d3.event.pageX)+"px").style("top", (d3.event.pageY)+"px").html ("Engine Cylinders is: "+d.EngineCylinders)})
+.on('mouseout', function () {tooltip.style("opacity", 10)})
+   
 d3.select("svg").append("g")
 .attr("transform", "translate("+margin+","+margin+")")
 .call(yAxis);
