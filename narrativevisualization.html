@@ -63,7 +63,6 @@ async function init() {
  console.log(data[1]);
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
- //console.log(groups);
  buttons
 	  .selectAll("button")
 	  .data(groups)
@@ -73,7 +72,7 @@ async function init() {
 	  .on("click", function(d) {
 		drawPlot(dataset, d);
 		})
-   
+	
  drawPlot(data, groups);
 }
    
@@ -90,6 +89,8 @@ console.log(data[2].Make);
 		.attr('cx', function(d,i) {return xScale(d.AverageCityMPG);})
 		.attr('cy', function(d) {return yScale(d.AverageHighwayMPG);})
 		.attr('r', function(d) {return Number(d.EngineCylinders) + 2;})
+		.style("fill", function(d, i) { return colorScale(d.Fuel); })
+
 		//.transition()
 		//.delay(function(d, i) { return i*40; })
 		//.attr("transform",function(d) { return "translate(" + xScale(d.AverageCityMPG) + "," + yScale(d.AverageHighwayMPG) + ")" })
@@ -98,7 +99,6 @@ console.log(data[2].Make);
 		.select("circle")
 		//.transition()
 		//.delay(function(d, i) { return i*40; })
-		.style("fill", function(d, i) { return colorScale(d.Fuel); })
 //circles
 //.enter()
 //.append('circle')
