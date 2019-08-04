@@ -59,7 +59,7 @@ async function init() {
  console.log(data[1]);
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
- 
+ console.log(groups);
  d3.select(".buttons")
 	  .selectAll("button")
 	  .data(groups)
