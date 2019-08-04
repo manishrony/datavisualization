@@ -9,37 +9,9 @@
       height: 80px;
       background: cyan;
       border: 0px;
-   }
-   .track,
-   .track-inset,
-   .track-overlay {
-      stroke-linecap: round;
-    }
-   .track {
-      stroke: #000;
-      stroke-opacity: 0.3;
-      stroke-width: 10px;
-    }
-   .track-inset {
-      stroke: #dcdcdc;
-      stroke-width: 8px;
-   }
-   .track-overlay {
-      pointer-events: stroke;
-      stroke-width: 50px;
-      stroke: transparent;
-      cursor: crosshair;
-   }
-   .handle {
-      fill: #fff;
-      stroke: #000;
-      stroke-opacity: 0.5;
-      stroke-width: 1.25px;
-    }
-   
+   } 
    </style>
 <body onload='init()'>
-<input type="range" name="mySlider" id=mySlider min=25 max=400 value="25">
 <svg class= "chart" width=500 height=500></svg>
 <div id="tooltip"/>
 
@@ -80,18 +52,8 @@ async function init() {
  dataset = data;
  drawPlot(data);
 }
-
-function updateCircles() {
-  renderCircles(slider.value);
-}
-
-function renderCircles(n){
-console.log("2:"+dataset[1]);
-drawPlot(dataset);
-}
    
 function drawPlot(data){
-
 var circles = plot.selectAll("circles")
     .data(data);
    
@@ -131,48 +93,6 @@ d3.select("svg")
       .style("text-anchor", "middle")
       .text("Average City MPG");
 
-}
-
-d3.select('#mySlider').call(
-        d3.slider()
-            .scale(d3.scale.ordinal().domain("Gasoline", "Diesel", "Electric").rangePoints([0, 2],1))
-            .axis(d3.svg.axis())
-            .snap(true)
-            .value("Diesel")
-            .on("slideend", function(evt, value) {       
-                svg.selectAll("text.timeband")              
-                    .text(value)                
-            })
-    );
-   
-   // Listen to the slider
-d3.select("#mySlider").on("change", function(d){
-   selectedValue = "";
-   console.log("Slider selection: "+this.value);
-   if (this.value == 1){
-      selectedValue = "Gasoline";
-   }
-   if (this.value == 2){
-      selectedValue = "Diesel";
-   }
-   if (this.value == 3){
-      selectedValue = "Electric";
-   }
-  update(selectedValue);
-})
-   
-function update(h) {
-  // update position and text of label according to slider scale
-//  handle.attr("cx", xScale(h));
- // label
-   // .attr("x", xScale(h))
-    //.text(h);
-
-  // filter data set and redraw plot
-  var newData = dataset.filter(function(d) {
-    return d.Fuel == h?h:0;
-  })
-  drawPlot(newData);
 }
 </script>
 </body>
