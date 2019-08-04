@@ -70,7 +70,7 @@ async function init() {
  const data= await d3.csv("https://flunky.github.io/cars2017.csv");
  console.log(data[1]);
  dataset = data;
- drawPlot(data, "All");
+ drawPlot(data, "Gasoline");
 }
    
 function drawPlot(data, fuel){
