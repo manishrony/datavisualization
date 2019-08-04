@@ -70,12 +70,6 @@ var yAxis = d3.axisLeft().scale(yScale).tickFormat(d3.format("~s")).tickValues([
 
 var tooltip =d3.select("#tooltip");
 
-var svgSlider = d3.select("#slider")
-    .append("svg")
-    .attr("width", width + 2* margin)
-    .attr("height", margin);
-//const slider = document.querySelector('#slider')
-
 var plot = d3.select("svg").append("g")
     .attr("class", "plot")
     .attr("transform", "translate(" + margin + "," + margin + ")");
@@ -139,7 +133,9 @@ d3.select("svg")
 
 }
 
-// Listen to the slider
+d3.select("#mySlider").scale(d3.scale.ordinal().domain(["Gasoline", "Diesel", "Electric"]).rangePoints([0, 2], 1))).snap(true).value("Gasoline");
+
+   // Listen to the slider
 d3.select("#mySlider").on("change", function(d){
    selectedValue = "";
    console.log("Slider selection: "+this.value);
