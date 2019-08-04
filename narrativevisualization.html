@@ -70,18 +70,19 @@ async function init() {
      	  .append("button")
 	  .text(function(d) { return "Fuel Type: " + d; })
 	  .on("click", function(d) {
-		drawPlot(dataset.filter(function(d) { return d.Fuel == fuel; })
-			)};);
+		drawPlot(dataset, d);})
 	
-thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
 drawPlot(data);
 }
    
-function drawPlot(dataGroup){
+function drawPlot(data){
+	
+thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
+
 console.log(dataGroup[2].Make);
 	
 	plot.selectAll(".circleGroups")
-		.data(dataGroup)
+		.data(thisDataGroup)
 		.enter()
 		.append("circle")
 		.attr('cx', function(d,i) {return xScale(d.AverageCityMPG);})
