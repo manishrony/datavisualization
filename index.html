@@ -40,7 +40,7 @@ var colorScale = d3.scaleOrdinal()
    
 var xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
 
-var yAxis = d3.axisLeft().scale(xScale).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
+var yAxis = d3.axisLeft().scale(yScale).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
 
 var tooltip =d3.select("#tooltip");
    
@@ -71,7 +71,7 @@ d3.select("svg")
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("AverageHighwayMPG"); 
+      .text("Average Highway MPG"); 
    
 d3.select("svg").append("g")
 .attr("transform", "translate("+margin+","+(margin+height)+")")
@@ -82,7 +82,7 @@ d3.select("svg")
             "translate(" + (width/2) + " ," + 
                            (height + margin + 30) + ")")
       .style("text-anchor", "middle")
-      .text("AverageCityMPG");
+      .text("Average City MPG");
 
 }
 </script>
