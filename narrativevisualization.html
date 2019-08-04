@@ -70,15 +70,21 @@ async function init() {
      	  .append("button")
 	  .text(function(d) { return "Fuel Type: " + d; })
 	  .on("click", function(d) {
-		drawPlot(dataset, d);})
+		drawPlot(dataset, d, true);})
 	
-drawPlot(data);
+drawPlot(dataset, "", false);
 }
    
-function drawPlot(data){
+function drawPlot(data, fuel, filter){
 	
-thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
-
+var thisDataGroup;
+if(filter)
+{
+	thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
+} else{
+	thisDataGroup = data;			
+}
+	
 console.log(dataGroup[2].Make);
 	
 	plot.selectAll(".circleGroups")
