@@ -78,12 +78,14 @@ async function init() {
 }
    
 function drawPlot(data, fuel){
-thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });
+thisDataGroup = data.filter(function(d) { return d.Fuel == fuel })
 //var circles = plot.selectAll("circles")
 //   .data(data.filter(function(d) { return d.Fuel == fuel }));
 	
 	plot.selectAll(".circleGroups")
 		.data(thisDataGroup)
+		.enter()
+		.append("g")
 		.transition()
 		.delay(function(d, i) { return i*40; })
 		.attr("transform",function(d) { return "translate(" + xScale(d.AverageCityMPG) + "," + yScale(d.AverageHighwayMPG) + ")" })
