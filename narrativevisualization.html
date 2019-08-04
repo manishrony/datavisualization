@@ -50,12 +50,12 @@ async function init() {
  const data= await d3.csv("https://flunky.github.io/cars2017.csv");
  console.log(data[1]);
  dataset = data;
- drawPlot(data);
+ drawPlot(data, "All");
 }
    
-function drawPlot(data){
+function drawPlot(data, fuel){
 var circles = plot.selectAll("circles")
-    .data(data);
+   .data(data.filter(function(d){return d.Fuel == fuel;}));
    
 circles
 .enter()
@@ -94,6 +94,25 @@ d3.select("svg")
       .text("Average City MPG");
 
 }
+
+function select(fuel) {
+        render(dataset, fuel);
+}   
+
 </script>
+<div class="control-group">
+    <button onclick="select('Gasoline')">
+        Gasoline
+    </button>
+    <button onclick="select('Diesel')">
+        Diesel
+    </button>
+    <button onclick="select('Electric')">
+        Electric
+    </button>
+    <button onclick="select()">
+        All
+    </button>
+</div>
 </body>
 </html>
