@@ -63,7 +63,7 @@ async function init() {
  console.log(data[1]);
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
- console.log(groups);
+ //console.log(groups);
  buttons
 	  .selectAll("button")
 	  .data(groups)
@@ -79,6 +79,8 @@ async function init() {
    
 function drawPlot(data, fuel){
 thisDataGroup = data.filter(function(d) { return d.Fuel == fuel })
+console.log(fuel);
+console.log(data);
 //var circles = plot.selectAll("circles")
 //   .data(data.filter(function(d) { return d.Fuel == fuel }));
 	
