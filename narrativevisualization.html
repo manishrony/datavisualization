@@ -75,7 +75,7 @@ drawPlot(dataset, "", false);
 }
    
 function drawPlot(data, fuel, filter){
-d3.select("svg").selectAll("circle")
+d3.select("svg").select("g").selectAll("circle")
 		.exit()
 		.remove();
 	
