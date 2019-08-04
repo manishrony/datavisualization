@@ -62,6 +62,8 @@ async function init() {
  const data= await d3.csv("https://flunky.github.io/cars2017.csv");
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
+ groups.add("All Fuel Type");
+	
  buttons
 	  .selectAll("button")
 	  .data(groups)
@@ -78,15 +80,13 @@ function drawPlot(data, fuel, filter){
 	plot.selectAll(".circle").remove();
 	
 var thisDataGroup;
-if(filter)
+if(filter && fuel != "All Fuel Type")
 {	
 	thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
 } else{
 	thisDataGroup = data;			
 }
-	
-console.log(thisDataGroup[2].Make);
-	
+		
 	plot.selectAll(".circleGroups")
 		.data(thisDataGroup)
 		.enter()
