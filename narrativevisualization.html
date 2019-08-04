@@ -81,7 +81,7 @@ var thisDataGroup;
 if(filter)
 {	
 	plot.selectAll(".circleGroups")
-		.data(thisDataGroup)
+		.data(data)
 		.exit()
 		.remove();
 	thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
