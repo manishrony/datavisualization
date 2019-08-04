@@ -68,7 +68,7 @@ async function init() {
      	  .append("button")
 	  .text(function(d) { return "Fuel Type: " + d; })
 	  .on("click", function(d) {
-		//	drawPlot(dataset, d);
+		drawPlot(dataset, d);
 		})
    
  drawPlot(data, groups);
