@@ -7,7 +7,7 @@
       text-align: center;
       width: 60px;
       height: 40px;
-      background: 0.0;
+      background: yellow;
       border: 0px;
    }</style>
 <body onload='init()'>
@@ -52,7 +52,7 @@ d3.select("svg")
 .attr('cy', function(d) {return y(d.AverageHighwayMPG);})
 .attr('r', function(d) {return Number(d.EngineCylinders)+2;})
 .on('mouseover', function(d,i){ tooltip.style("opacity", 1).style("left", (d3.event.pageX)+"px").style("top", (d3.event.pageY)+"px").html ("Engine Cylinders is: "+d.EngineCylinders)})
-.on('mouseout', function () {tooltip.style("opacity", 10)})
+.on('mouseout', function () {tooltip.style("opacity", 0)})
    
 d3.select("svg").append("g")
 .attr("transform", "translate("+margin+","+margin+")")
