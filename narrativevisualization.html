@@ -39,6 +39,7 @@
    
    </style>
 <body onload='init()'>
+<input type="range" name="slider" id="slider" value="1" min="0" max="3" step="1" oninput="plotData()">
 <svg class= "chart" width=500 height=500></svg>
 <div id="tooltip"/>
 <div id="slider"/>
@@ -73,6 +74,7 @@ var svgSlider = d3.select("#slider")
     .append("svg")
     .attr("width", width + 2* margin)
     .attr("height", margin);
+//const slider = document.querySelector('#slider')
 
 var slider = svgSlider.append("g")
     .attr("class", "slider")
@@ -123,6 +125,13 @@ async function init() {
  drawPlot(data);
 }
 
+function updateCircles() {
+  renderCircles(slider.value)
+}
+
+function renderCircles(n){
+
+}
 function drawPlot(data){
 
 var circles = plot.selectAll("circles")
