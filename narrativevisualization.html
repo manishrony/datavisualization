@@ -76,14 +76,14 @@ drawPlot(dataset, "", false);
 }
    
 function drawPlot(data, fuel, filter){
+plot.selectAll(".circleGroups")
+		.data(data)
+		.exit()
+		.remove();
 	
 var thisDataGroup;
 if(filter)
 {	
-	plot.selectAll(".circleGroups")
-		.data(data)
-		.exit()
-		.remove();
 	thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
 } else{
 	thisDataGroup = data;			
