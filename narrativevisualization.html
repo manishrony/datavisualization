@@ -42,7 +42,7 @@
 <input type="range" name="slider" id="slider" value="1" min="0" max="3" step="1" oninput="updateCircles()">
 <svg class= "chart" width=500 height=500></svg>
 <div id="tooltip"/>
-<div id="slider"/>
+
 <script>
  var margin=50;
  var height=400;
@@ -130,7 +130,7 @@ function updateCircles() {
 }
 
 function renderCircles(n){
-
+drawPlot(dataset);
 }
 function drawPlot(data){
 
