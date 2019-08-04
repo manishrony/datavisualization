@@ -99,8 +99,10 @@ if(filter && fuel != "All Fuel Type")
 		.on('mouseout', function (d) { d3.select(this).attr("r", Number(d.EngineCylinders)+2).style("fill", colorScale(d.Fuel)); tooltip.style("opacity", 0)});
 
 d3.select("svg").append("text")
-    .attr("x", width / 2 )
-    .attr("y", 0)
+    .attr("x", width  )
+    .attr("y", margin/2)
+    .style("font-family", "sans-serif")
+    .style("font-size", "20px")
     .style("text-anchor", "middle")
     .text("Fuel Efficiency Scatterplot Visualization for different Vehicle Fuel Type");
 	
