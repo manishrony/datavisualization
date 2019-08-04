@@ -139,7 +139,7 @@ d3.select("svg")
 
 }
 
-// Listen to the slider?
+// Listen to the slider
 d3.select("#mySlider").on("change", function(d){
   selectedValue = this.value
   update(selectedValue)
@@ -147,14 +147,14 @@ d3.select("#mySlider").on("change", function(d){
    
 function update(h) {
   // update position and text of label according to slider scale
-  handle.attr("cx", xScale(h));
-  label
-    .attr("x", xScale(h))
-    .text(h);
+//  handle.attr("cx", xScale(h));
+ // label
+   // .attr("x", xScale(h))
+    //.text(h);
 
   // filter data set and redraw plot
   var newData = dataset.filter(function(d) {
-    return d.Fuel < h;
+    return d.Fuel == h?h:0;
   })
   drawPlot(newData);
 }
