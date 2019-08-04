@@ -64,8 +64,8 @@ d3.select("svg").append("g")
 d3.select("svg")
       .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y",  (height / 2))
-      .attr("x", margin)
+      .attr("y", margin))
+      .attr("x", (height - margin)/2)
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("AverageHighwayMPG"); 
@@ -77,7 +77,7 @@ d3.select("svg")
       .append("text")             
       .attr("transform",
             "translate(" + (width/2) + " ," + 
-                           (height + margin + 50) + ")")
+                           (height + margin + 30) + ")")
       .style("text-anchor", "middle")
       .text("AverageCityMPG");
 
