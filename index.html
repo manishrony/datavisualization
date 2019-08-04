@@ -1,9 +1,18 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {fill: lightblue; stroke: black;} </style>
+<style> .chart circle {fill: lightblue; stroke: black;} 
+   #tooltip {
+      opacity: 0;
+      position: absolute;
+      text-align: center;
+      width: 60px;
+      height: 40px;
+      background: white;
+      border: 0px;
+   }</style>
 <body onload='init()'>
-<svg width=300 height=300>
-</svg>
+<svg class= "chart" width=300 height=300></svg>
+<div id="tooltip"/>
 <script>
 async function init() {
 
@@ -30,6 +39,8 @@ var xAxis = d3.axisBottom().scale(x).tickFormat(d3.format("~s")).tickValues(['10
 
 var yAxis = d3.axisLeft().scale(y).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
 
+var tooltip =d3.select("#tooltip");
+   
 d3.select("svg")
 .append("g")
 .attr("transform", "translate("+margin+","+margin+")")
