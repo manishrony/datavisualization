@@ -1,7 +1,7 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> .chart circle {fill: lightblue; stroke: black;} 
-	.buttons text {fill: #eee;  }
+	.button text {fill: #eee;  }
    #tooltip {
       opacity: 0;
       position: absolute;
@@ -68,6 +68,7 @@ async function init() {
 	  .data(groupset)
 	  .enter()
      	  .append("button")
+	  .attr('class', 'button')
 	  .text(function(d) { return "Fuel Type: " + d; })
 	  .on("click", function(d) {
 		drawPlot(dataset, d, true);})
@@ -100,7 +101,7 @@ if(filter && fuel != "All Fuel Type")
 		.on('mouseout', function (d) { d3.select(this).attr("r", Number(d.EngineCylinders)+2).style("fill", colorScale(d.Fuel)); tooltip.style("opacity", 0)});
 
 d3.select("svg").append("text")
-    .attr("x", width - 200  )
+    .attr("x", width - 300  )
     .attr("y", margin/2)
     .style("font-family", "sans-serif")
     .style("font-size", "20px")
