@@ -70,9 +70,8 @@ async function init() {
      	  .append("button")
 	  .text(function(d) { return "Fuel Type: " + d; })
 	  .on("click", function(d) {
-	 	
-		drawPlot(dataset.filter(function(d) { return d.Fuel == fuel });
-		})
+		drawPlot(dataset.filter(function(d) { return d.Fuel == fuel };)
+			)};
 thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
 drawPlot(data);
 }
