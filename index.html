@@ -15,8 +15,8 @@
 <div id="tooltip"/>
 <script>
 async function init() {
-
-   var margin=50;
+ 
+ var margin=50;
  var height=400;
  var width=400;
  var domainStart=10;
@@ -35,7 +35,7 @@ var y= d3.scaleLog()
   .range([0,400])
   .base(10);
 
-var colorScale = d3.scale.ordinal()
+var colorScale = d3.scaleOrdinal()
   .range(["#7479BC","#7C2833","#E7AC37","BDE7AE","E17250","ECF809","FC6E61"]);
    
 var xAxis = d3.axisBottom().scale(x).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
