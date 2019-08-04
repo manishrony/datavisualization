@@ -21,7 +21,20 @@
 <body onload='init()'>
 <svg class= "chart" width=500 height=500></svg>
 <div id="tooltip"/>
-
+<div class="control-group">
+    <button onclick="select('Gasoline')">
+        Gasoline
+    </button>
+    <button onclick="select('Diesel')">
+        Diesel
+    </button>
+    <button onclick="select('Electric')">
+        Electric
+    </button>
+    <button onclick="select()">
+        All
+    </button>
+</div>
 <script>
  var margin=50;
  var height=400;
@@ -107,19 +120,5 @@ function select(fuel) {
 }   
 
 </script>
-<div class="control-group">
-    <button onclick="select('Gasoline')">
-        Gasoline
-    </button>
-    <button onclick="select('Diesel')">
-        Diesel
-    </button>
-    <button onclick="select('Electric')">
-        Electric
-    </button>
-    <button onclick="select()">
-        All
-    </button>
-</div>
 </body>
 </html>
