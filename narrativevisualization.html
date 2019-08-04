@@ -76,44 +76,6 @@ var svgSlider = d3.select("#slider")
     .attr("height", margin);
 //const slider = document.querySelector('#slider')
 
-var slider = svgSlider.append("g")
-    .attr("class", "slider")
-    .attr("transform", "translate(" + margin + "," + height + ")");
-
-slider.append("line")
-    .attr("class", "track")
-    .attr("x1", 0)
-    .attr("x2", 400)
-  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-    .attr("class", "track-inset")
-  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-    .attr("class", "track-overlay")
-    .call(d3.drag()
-        .on("start.interrupt", function() { slider.interrupt(); })
-        .on("start drag", function() { update(xScale.invert(d3.event.x)); }));
-
-slider.insert("g", ".track-overlay")
-    .attr("class", "ticks")
-    .attr("transform", "translate(0," + 18 + ")")
-  .selectAll("text")
-    .data(xScale.ticks(10))
-    .enter()
-    .append("text")
-    .attr("x", xScale)
-    .attr("y", 10)
-    .attr("text-anchor", "middle")
-    .text(function(d) { return d; });
-
-var handle = slider.insert("circle", ".track-overlay")
-    .attr("class", "handle")
-    .attr("r", 9);
-
-var label = slider.append("text")  
-    .attr("class", "label")
-    .attr("text-anchor", "middle")
-    .text(function(d) { return d; })
-    .attr("transform", "translate(0," + (-25) + ")")   
-
 var plot = d3.select("svg").append("g")
     .attr("class", "plot")
     .attr("transform", "translate(" + margin + "," + margin + ")");
