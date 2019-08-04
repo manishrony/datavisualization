@@ -45,7 +45,7 @@ var yScale= d3.scaleLog()
   .base(10);
 
 var colorScale = d3.scaleOrdinal()
-  .range(["BLUE","YELLOW"]);
+  .range(["BLUE","RED", "YELLOW"]);
    
 var xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
 
@@ -75,7 +75,8 @@ drawPlot(dataset, "", false);
 }
    
 function drawPlot(data, fuel, filter){
-d3.select("svg").select("g").selectAll("circle")
+	plot.selectAll(".circleGroups")
+		.data(dataset)
 		.exit()
 		.remove();
 	
