@@ -20,8 +20,8 @@
    </style>
 <body onload='init()'>
 <svg class= "chart" width=500 height=500></svg>
+<div class="buttons" id="buttons"></div>
 <div id="tooltip"/>
-<div class="buttons"></div>
 
 <script>
  var margin=50;
@@ -49,6 +49,7 @@ var xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format("~s")).tickValues
 var yAxis = d3.axisLeft().scale(yScale).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
 
 var tooltip =d3.select("#tooltip");
+var buttons =d3.select("#buttons");
 
 var plot = d3.select("svg").append("g")
     .attr("class", "plot")
@@ -60,7 +61,7 @@ async function init() {
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
  console.log(groups);
- plot.select(".buttons")
+ buttons
 	  .selectAll("button")
 	  .data(groups)
 	  .enter()
@@ -75,7 +76,7 @@ async function init() {
    
 function drawPlot(data, fuel){
 var circles = plot.selectAll("circles")
-   .data(data.filter(function(d){return d.Fuel == fuel;}));
+   .data(data);
    
 circles
 .enter()
