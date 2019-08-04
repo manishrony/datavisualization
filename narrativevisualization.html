@@ -48,10 +48,8 @@
  var width=400;
  var domainStart=10;
  var domainEnd=150;
-  
- const data= await d3.csv("https://flunky.github.io/cars2017.csv");
- console.log(data[1]);
-
+ var dataset;
+   
 var xScale= d3.scaleLog()
   .domain([domainStart, domainEnd])
   .range([0,400])
@@ -79,8 +77,6 @@ var svgSlider = d3.select("#slider")
 var slider = svgSlider.append("g")
     .attr("class", "slider")
     .attr("transform", "translate(" + margin + "," + height / 2 + ")");
-
-async function init() {
 
 slider.append("line")
     .attr("class", "track")
@@ -115,7 +111,14 @@ var label = slider.append("text")
     .attr("text-anchor", "middle")
     .text(function(d) { return d; })
     .attr("transform", "translate(0," + (-25) + ")")   
-   
+
+async function init() {
+ const data= await d3.csv("https://flunky.github.io/cars2017.csv");
+ console.log(data[1]);
+ dataset = data;
+}
+
+function drawPlot(data){
 d3.select("svg")
 .append("g")
 .attr("transform", "translate("+margin+","+margin+")")
