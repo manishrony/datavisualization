@@ -25,7 +25,6 @@
 <svg class= "chart" width=500 height=500></svg>
 <div class="buttons" id="buttons"></div>
 <div id="tooltip"/>
-<h1>Fuel Efficiency Scatterplot Visualization for different Vehicle Fuel Type</h1>
 <script>
  var margin=50;
  var height=400;
@@ -98,7 +97,13 @@ if(filter && fuel != "All Fuel Type")
 		.on('mouseover', function(d,i){ d3.select(this).attr("r", Number(d.EngineCylinders)+5).style("fill", "orange"); tooltip.style("opacity", 1).style("left", (d3.event.pageX)+"px").style("top", (d3.event.pageY)+"px")
    			.html ("Make: "+d.Make + ", Fuel: "+ d.Fuel)})
 		.on('mouseout', function (d) { d3.select(this).attr("r", Number(d.EngineCylinders)+2).style("fill", colorScale(d.Fuel)); tooltip.style("opacity", 0)});
-   
+
+d3.select("svg").append("text")
+    .attr("x", width / 2 )
+    .attr("y", 0)
+    .style("text-anchor", "middle")
+    .text("Fuel Efficiency Scatterplot Visualization for different Vehicle Fuel Type");
+	
 d3.select("svg").append("g")
 .attr("transform", "translate("+margin+","+margin+")")
 .call(yAxis);
@@ -122,12 +127,7 @@ d3.select("svg")
       .style("text-anchor", "middle")
       .text("Average City MPG");
 
-}
-
-function select(fuel) {
-        render(dataset, fuel);
-}   
-
+} 
 </script>
 </body>
 </html>
