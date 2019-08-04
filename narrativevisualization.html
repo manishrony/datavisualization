@@ -77,7 +77,7 @@ drawPlot(dataset, "", false);
    
 function drawPlot(data, fuel, filter){
 plot.selectAll(".circleGroups")
-		.data(data)
+		.selectAll("circle")
 		.exit()
 		.remove();
 	
