@@ -43,8 +43,6 @@
 <div id="tooltip"/>
 <div id="slider"/>
 <script>
-async function init() {
- 
  var margin=50;
  var height=400;
  var width=400;
@@ -82,6 +80,8 @@ var slider = svgSlider.append("g")
     .attr("class", "slider")
     .attr("transform", "translate(" + margin + "," + height / 2 + ")");
 
+async function init() {
+
 slider.append("line")
     .attr("class", "track")
     .attr("x1", xScale.range()[0])
@@ -114,9 +114,7 @@ var label = slider.append("text")
     .attr("class", "label")
     .attr("text-anchor", "middle")
     .text(function(d) { return d; })
-    .attr("transform", "translate(0," + (-25) + ")")
-
-   
+    .attr("transform", "translate(0," + (-25) + ")")   
    
 d3.select("svg")
 .append("g")
@@ -127,7 +125,7 @@ d3.select("svg")
 .append('circle')
 .attr('cx', function(d,i) {return xScale(d.AverageCityMPG);})
 .attr('cy', function(d) {return yScale(d.AverageHighwayMPG);})
-.attr('r', function(d) {return Number(d.EngineCylinders)*2;})
+.attr('r', function(d) {return Number(d.EngineCylinders) + 2;})
 .style('fill', function (d) { return colorScale(d.Fuel); })
 .on('mouseover', function(d,i){ d3.select(this).attr("r", Number(d.EngineCylinders)+5).style("fill", "orange"); tooltip.style("opacity", 1).style("left", (d3.event.pageX)+"px").style("top", (d3.event.pageY)+"px")
    .html ("Make: "+d.Make + ", Fuel: "+ d.Fuel)})
@@ -156,6 +154,20 @@ d3.select("svg")
       .style("text-anchor", "middle")
       .text("Average City MPG");
 
+}
+   
+function update(h) {
+  // update position and text of label according to slider scale
+  handle.attr("cx", xScale(h));
+  label
+    .attr("x", xScale(h))
+    .text(h);
+
+  // filter data set and redraw plot
+  var newData = dataset.filter(function(d) {
+    return d.Fuel < h;
+  })
+  drawPlot(newData);
 }
 </script>
 </body>
