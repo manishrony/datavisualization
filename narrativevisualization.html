@@ -139,7 +139,7 @@ d3.select("svg")
 
 }
 
-d3.select("#mySlider").range(["Gasoline", "Electric", "Diesel" ]);
+d3.select("#mySlider").scale(d3.scaleOrdinal().domain(["Gasoline", "Electric", "Diesel" ]));
    
 // Listen to the slider
 d3.select("#mySlider").on("change", function(d){
