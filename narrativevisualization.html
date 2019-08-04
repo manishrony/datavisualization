@@ -80,7 +80,7 @@ async function init() {
 function drawPlot(data, fuel){
 thisDataGroup = data.filter(function(d) { return d.Fuel == fuel })
 console.log(fuel);
-console.log(data);
+console.log(data[2]).make);
 //var circles = plot.selectAll("circles")
 //   .data(data.filter(function(d) { return d.Fuel == fuel }));
 	
@@ -88,8 +88,8 @@ console.log(data);
 		.data(thisDataGroup)
 		.enter()
 		.append("g")
-		.transition()
-		.delay(function(d, i) { return i*40; })
+		//.transition()
+		//.delay(function(d, i) { return i*40; })
 		.attr("transform",function(d) { return "translate(" + xScale(d.AverageCityMPG) + "," + yScale(d.AverageHighwayMPG) + ")" })
 
 	plot.selectAll(".circleGroups")
