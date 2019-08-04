@@ -79,7 +79,10 @@ function drawPlot(data, fuel, filter){
 	
 var thisDataGroup;
 if(filter)
-{
+{	
+	plot.selectAll(".circleGroups")
+		.data(thisDataGroup)
+		.exit();
 	thisDataGroup = data.filter(function(d) { return d.Fuel == fuel });	
 } else{
 	thisDataGroup = data;			
