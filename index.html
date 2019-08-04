@@ -9,10 +9,39 @@
       height: 80px;
       background: cyan;
       border: 0px;
-   }</style>
+   }
+   .track,
+   .track-inset,
+   .track-overlay {
+      stroke-linecap: round;
+    }
+   .track {
+      stroke: #000;
+      stroke-opacity: 0.3;
+      stroke-width: 10px;
+    }
+   .track-inset {
+      stroke: #dcdcdc;
+      stroke-width: 8px;
+   }
+   .track-overlay {
+      pointer-events: stroke;
+      stroke-width: 50px;
+      stroke: transparent;
+      cursor: crosshair;
+   }
+   .handle {
+      fill: #fff;
+      stroke: #000;
+      stroke-opacity: 0.5;
+      stroke-width: 1.25px;
+    }
+   
+   </style>
 <body onload='init()'>
 <svg class= "chart" width=500 height=500></svg>
 <div id="tooltip"/>
+<div id="slider"></div>
 <script>
 async function init() {
  
@@ -43,9 +72,30 @@ var xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format("~s")).tickValues
 var yAxis = d3.axisLeft().scale(yScale).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
 
 var tooltip =d3.select("#tooltip");
-   
-d3.select("svg").append("g").attr("class", "slider").scale(colorScale)
-   .axis( d3.select("svg").axis() ).snap(true).value("Gecko");
+
+var svgSlider = d3.select("#slider")
+    .append("svg")
+    .attr("width", width + margin + margin)
+    .attr("height", height);
+
+var slider = svgSlider.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(" + margin + "," + height / 2 + ")");
+
+slider.append("line")
+    .attr("class", "track")
+    .attr("x1", xScale.range()[0])
+    .attr("x2", xScale.range()[1])
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+        .on("start.interrupt", function() { slider.interrupt(); })
+        .on("start drag", function() { update(xScale.invert(d3.event.x)); }));
+
+//d3.select("svg").append("g").attr("class", "slider").scale(colorScale)
+ //  .axis( d3.select("svg").axis() ).snap(true).value("Gecko");
    
 d3.select("svg")
 .append("g")
