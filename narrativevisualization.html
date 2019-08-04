@@ -133,8 +133,18 @@ d3.select("svg")
 
 }
 
-d3.select("#mySlider").scale(d3.scale.ordinal().domain(["Gasoline", "Diesel", "Electric"]).rangePoints([0, 2], 1))).snap(true).value("Gasoline");
-
+d3.select('#mySlider').call(
+        d3.slider()
+            .scale(d3.scale.ordinal().domain("Gasoline", "Diesel", "Electric").rangePoints([0, 2],1))
+            .axis(d3.svg.axis())
+            .snap(true)
+            .value("Diesel")
+            .on("slideend", function(evt, value) {       
+                svg.selectAll("text.timeband")              
+                    .text(value)                
+            })
+    );
+   
    // Listen to the slider
 d3.select("#mySlider").on("change", function(d){
    selectedValue = "";
