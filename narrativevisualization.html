@@ -71,12 +71,12 @@ var tooltip =d3.select("#tooltip");
 
 var svgSlider = d3.select("#slider")
     .append("svg")
-    .attr("width", width + margin + margin)
+    .attr("width", width + 2* margin)
     .attr("height", height);
 
 var slider = svgSlider.append("g")
     .attr("class", "slider")
-    .attr("transform", "translate(" + margin + "," + height / 2 + ")");
+    .attr("transform", "translate(" + margin + "," + height + ")");
 
 slider.append("line")
     .attr("class", "track")
