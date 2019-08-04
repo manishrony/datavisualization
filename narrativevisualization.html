@@ -45,7 +45,7 @@ var yScale= d3.scaleLog()
   .base(10);
 
 var colorScale = d3.scaleOrdinal()
-  .range(["BLUE","YELLOW]);
+  .range(["BLUE","YELLOW"]);
    
 var xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
 
