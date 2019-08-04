@@ -61,10 +61,26 @@ d3.select("svg")
 d3.select("svg").append("g")
 .attr("transform", "translate("+margin+","+margin+")")
 .call(yAxis);
-
+d3.select("svg")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("AverageHighwayMPG"); 
+   
 d3.select("svg").append("g")
 .attr("transform", "translate("+margin+","+(margin+height)+")")
 .call(xAxis);
+d3.select("svg")
+      .append("text")             
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin + 20) + ")")
+      .style("text-anchor", "middle")
+      .text("AverageCityMPG");
+
 }
 </script>
 </body>
