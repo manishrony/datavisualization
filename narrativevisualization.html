@@ -62,7 +62,7 @@ async function init() {
  const data= await d3.csv("https://flunky.github.io/cars2017.csv");
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
- var groupset = d3.set(groups).add("All Fuel Type");
+ var groupset = groups.concat("All Fuel Type");
  buttons
 	  .selectAll("button")
 	  .data(groupset)
