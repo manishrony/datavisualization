@@ -139,11 +139,19 @@ d3.select("svg")
 
 }
 
-d3.select("#mySlider").call(d3.slider().scale(d3.scaleOrdinal().domain(["Gasoline", "Electric", "Diesel" ])));
 // Listen to the slider
 d3.select("#mySlider").on("change", function(d){
-  selectedValue = this.value
-  update(selectedValue)
+   selectedValue = "";
+   if (this.value == 1){
+      selectedValue = "Gasoline";
+   }
+   if (this.value == 2){
+      selectedValue = "Diesel";
+   }
+   if (this.value == 3){
+      selectedValue = "Electric";
+   }
+  update(selectedValue);
 })
    
 function update(h) {
