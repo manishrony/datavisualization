@@ -76,7 +76,7 @@ async function init() {
    
 function drawPlot(data, fuel){
 var circles = plot.selectAll("circles")
-   .data(data);
+   .data(data.filter(function(d) { return d.Fuel == fuel }));
    
 circles
 .enter()
