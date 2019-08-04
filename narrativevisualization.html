@@ -75,7 +75,7 @@ drawPlot(dataset, "", false);
 }
    
 function drawPlot(data, fuel, filter){
-	plot.selectAll("circ").remove();
+	plot.selectAll(".circle").remove();
 	
 var thisDataGroup;
 if(filter)
@@ -91,6 +91,7 @@ console.log(thisDataGroup[2].Make);
 		.data(thisDataGroup)
 		.enter()
 		.append("circle")
+		.attr('class', "circle")
 		.attr('cx', function(d,i) {return xScale(d.AverageCityMPG);})
 		.attr('cy', function(d) {return yScale(d.AverageHighwayMPG);})
 		.attr('r', function(d) {return Number(d.EngineCylinders) + 2;})
