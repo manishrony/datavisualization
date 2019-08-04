@@ -60,11 +60,11 @@ async function init() {
  dataset = data;
  var groups = d3.set(data.map(function(d) { return d.Fuel })).values();
  console.log(groups);
- d3.select(".buttons")
+ plot.select(".buttons")
 	  .selectAll("button")
 	  .data(groups)
 	  .enter()
-     .append("button")
+     	  .append("button")
 	  .text(function(d) { return "Fuel Type: " + d; })
 	  .on("click", function(d) {
 		//	drawPlot(dataset, d);
