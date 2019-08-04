@@ -11,14 +11,14 @@
       border: 0px;
    }</style>
 <body onload='init()'>
-<svg class= "chart" width=300 height=300></svg>
+<svg class= "chart" width=500 height=500></svg>
 <div id="tooltip"/>
 <script>
 async function init() {
 
    var margin=50;
- var height=200;
- var width=200;
+ var height=400;
+ var width=400;
  var domainStart=10;
  var domainEnd=150;
   
@@ -27,12 +27,12 @@ async function init() {
 
 var x= d3.scaleLog()
   .domain([domainStart, domainEnd])
-  .range([0,200])
+  .range([0,400])
   .base(10);
 
 var y= d3.scaleLog()
   .domain([domainEnd, domainStart])
-  .range([0,200])
+  .range([0,400])
   .base(10);
 
 var xAxis = d3.axisBottom().scale(x).tickFormat(d3.format("~s")).tickValues(['10', '20', '50','100']);
