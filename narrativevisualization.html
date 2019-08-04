@@ -112,6 +112,10 @@ var label = slider.append("text")
     .text(function(d) { return d; })
     .attr("transform", "translate(0," + (-25) + ")")   
 
+var plot = d3.select("svg").append("g")
+    .attr("class", "plot")
+    .attr("transform", "translate(" + margin + "," + margin + ")");
+    
 async function init() {
  const data= await d3.csv("https://flunky.github.io/cars2017.csv");
  console.log(data[1]);
@@ -120,11 +124,11 @@ async function init() {
 }
 
 function drawPlot(data){
-d3.select("svg")
-.append("g")
-.attr("transform", "translate("+margin+","+margin+")")
-.selectAll('circle')
-.data(data)
+
+var circles = plot.selectAll("circles")
+    .data(data);
+   
+circles
 .enter()
 .append('circle')
 .attr('cx', function(d,i) {return xScale(d.AverageCityMPG);})
